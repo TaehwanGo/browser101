@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Window Size</title>
+    <style>
+        .tag{
+            display: inline-block;
+            background-color: thistle;
+            padding: 16px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="tag">Window Size</div>
+    <script>
+        const tag = document.querySelector('.tag');
+        function updateTag() {
+            tag.innerHTML = `
+            window.screen: ${window.screen.width}, ${window.screen.height} <br/>
+            window.outer: ${window.outerWidth}, ${window.outerHeight} <br/>
+            window.inner: ${window.innerWidth}, ${window.innerHeight} <br/>
+            documentElement.clientWidth: ${document.documentElement.clientWidth}, ${document.documentElement.clientHeight} <br/>
+            `;
+        }
+        window.addEventListener('resize', () => {
+            // tag.innerHTML = `
+            // window.screen: ${window.screen.width}, ${window.screen.height} <br/>
+            // window.outer: ${window.outerWidth}, ${window.outerHeight} <br/>
+            // window.inner: ${window.innerWidth}, ${window.innerHeight} <br/>
+            // documentElement.clientWidth: ${document.documentElement.clientWidth}, ${document.documentElement.clientHeight} <br/>
+            // `; // 이렇게만 하면 사이즈 변경전까진 아무것도 안뜨기 때문에 함수를 이용
+            // console.log(`window.screen: ${window.screen.width}, ${window.screen.height}`);
+            // console.log(`window.outer: ${window.outerWidth}, ${window.outerHeight}`);
+            // console.log(`window.inner: ${window.innerWidth}, ${window.innerHeight}`);
+            // console.log(`documentElement.clientWidth: ${document.documentElement.clientWidth}, ${document.documentElement.clientHeight}`);
+            updateTag();
+        })
+        updateTag();
+    </script>
+</body>
+</html>
