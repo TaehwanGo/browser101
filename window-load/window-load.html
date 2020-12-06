@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="test.js" defer></script>
+</head>
+<body>
+    
+    <script>
+        window.addEventListener('load', () => { // 모든게 다운로드 되면 실행
+            console.log('load');
+        });
+        window.addEventListener('DOMContentLoaded', () => { // only document : html만 다운되면 실행
+            console.log('DOMContentLoaded');
+        });
+        // 페이지를 나가기 전에 우리가 무언가를 처리해야 될때 사용 가능
+        window.addEventListener('beforeunload', ()=>{
+            console.log('beforeunload');
+        });
+        window.addEventListener('unload', ()=>{
+            console.log('unload');
+        })
+    </script>
+</body>
+</html>
