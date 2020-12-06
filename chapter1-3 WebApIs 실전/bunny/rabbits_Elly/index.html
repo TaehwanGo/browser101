@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Scroll</title>
+    <style>
+      body {
+        background-color: black;
+        text-align: center;
+      }
+      img {
+        display: block;
+        margin: auto;
+      }
+
+      button {
+        outline: none;
+        background-color: tomato;
+        color: white;
+        font-size: 32px;
+        margin: 16px 0px;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Find a rabbit 🐇</button>
+    <img src="img/carrot.png" alt="carrot" class="carrot">
+    <img src="img/carrot.png" alt="carrot" class="carrot">
+    <img src="img/carrot.png" alt="carrot" class="carrot">
+    <img src="img/carrot.png" alt="carrot" class="carrot">
+    <img src="img/carrot.png" alt="carrot" class="carrot">
+    <img src="img/carrot.png" alt="carrot" class="carrot">
+    <img src="img/rabbit.png" alt="rabbit" id="rabbit">
+    <img src="img/carrot.png" alt="carrot" class="carrot">
+    <img src="img/carrot.png" alt="carrot" class="carrot">
+    <img src="img/carrot.png" alt="carrot" class="carrot">
+    <img src="img/carrot.png" alt="carrot" class="carrot">
+
+    <script>
+      const button = document.querySelector('button');
+      const rabbit = document.querySelector('#rabbit');
+      button.addEventListener('click', () => {
+        // rabbitRect = rabbit.getBoundingClientRect();
+        // console.log(rabbitRect.x, rabbit.y); // 값이 다르네
+        // window.scrollTo(rabbitRect.x, rabbitRect.y); // 이건 된다. 어쨋든 smooth하게 이동하려면 scrollIntoView를 써야 함 !
+        rabbit.scrollIntoView({behavior: "smooth", block: "center"}); // mdn 사이트에서 옵션 확인하고 필요한 옵션을 선택해서 사용
+      });
+    </script>
+  </body>
+</html>
