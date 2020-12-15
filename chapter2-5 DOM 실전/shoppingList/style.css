@@ -1,0 +1,97 @@
+@import "./reset.css";
+
+body {
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #C8CDDB;
+}
+
+.app {
+    width: 260px;
+    height: 410px;
+    background-color: #F0EEF6;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border-radius: 16px;
+    overflow: hidden;
+}
+
+@media screen and (max-width:260px) and (max-height:410px) {
+    .app {
+        width: 100%;
+        height: 100%;
+        border-radius: 8%;
+    }
+}
+
+header {
+    width: 100%;
+    height: 8%;
+    background: linear-gradient(to bottom right, #DFB7CF, #83B4EC);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 16px;
+    color: white;
+}
+
+main {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.list {
+    padding: 10px 20px;
+    font-size: 0.8em;
+}
+
+.list_item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.input_item {
+    width: 100%;
+    border: none;
+    height: 15px;
+    padding: 3px;
+}
+
+footer {
+    width: 100%;
+    height: 10%;
+    background: linear-gradient(to bottom right, #DFB7CF, #83B4EC);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+footer span {
+    width: 25px;
+    height: 25px;
+    background-color: black;
+    border-radius: 50%;
+    font-size: 16px;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+i {
+    cursor: pointer;
+}
