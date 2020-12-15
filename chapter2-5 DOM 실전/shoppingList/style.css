@@ -55,6 +55,10 @@ main {
 .list {
     padding: 10px 20px;
     font-size: 0.8em;
+    height: 300px;
+    /* height을 고정하면 되는구나 고정없이 할 순 없을까?
+    grid로 하면 가능할거 같기도 한데 */
+    overflow-y: auto;
 }
 
 .list_item {
