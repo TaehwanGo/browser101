@@ -14,11 +14,15 @@ function removeItem() {
 
 function makeItem() {
     const textFromInput = inputText.value;
+    if(textFromInput === ''){
+        inputText.focus();
+        return;
+    }
     const textToSpan = document.createElement("span");
     textToSpan.textContent = textFromInput;
     // console.log(textToSpan);
     const icon = document.createElement("i");
-    icon.setAttribute("class", "fas fa-trash-alt")
+    icon.setAttribute("class", "fas fa-trash-alt");
     icon.addEventListener("click", removeItem);
 
     const itemContainer = document.createElement("li");
@@ -29,9 +33,11 @@ function makeItem() {
     // `;    
     itemContainer.appendChild(textToSpan);
     itemContainer.appendChild(icon);
-
-    list.appendChild(itemContainer);
+    
+    list.appendChild(itemContainer); 
+    itemContainer.scrollIntoView({block: "center"}); // appendChild로 붙인 다음에 scrollIntoView를 붙여 줘야 됨
     inputText.value = "";
+    inputText.focus();
 }
 
 function handleSubmit(event) {

@@ -48,31 +48,51 @@ main {
     width: 100%;
     height: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    align-items: flex-end;
+    position: relative;
 }
 
 .list {
+    position: absolute;
     padding: 10px 20px;
     font-size: 0.8em;
-    height: 300px;
     /* height을 고정하면 되는구나 고정없이 할 순 없을까?
-    grid로 하면 가능할거 같기도 한데 */
+    grid로 하면 가능할거 같기도 한데 : absolute로 해결 */
     overflow-y: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 21px;
+}
+
+.list i {
+    transition: all 300ms ease-in;
+}
+
+.list i:hover {
+    color: tomato;
+    transform: scale(1.3);
 }
 
 .list_item {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 10px;
+    padding: 7px 0px;
+    border-bottom: lightgray 1px solid;
+}
+
+#jsInputForm{
+    width: 100%;
 }
 
 .input_item {
     width: 100%;
     border: none;
+    outline: none;
     height: 15px;
     padding: 3px;
 }
+
 
 footer {
     width: 100%;
@@ -95,6 +115,11 @@ footer span {
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    transition: transform 300ms ease-in;
+}
+
+.plusBtn:hover {
+    transform: scale(1.1);
 }
 
 i {
