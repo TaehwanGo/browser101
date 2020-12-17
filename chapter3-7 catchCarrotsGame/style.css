@@ -1,0 +1,144 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color: black;
+    display: flex;
+    justify-content: center;
+    padding-top: 10vh;
+}
+
+.screen {
+    width: 75vw;
+    height: 50vw;
+    background: url("carrot/img/background.png");
+    border-radius: 10px;
+    background-size: cover;
+    background-position: center;
+
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-rows: 55fr 45fr;
+    overflow: hidden;
+    position: relative;
+}
+
+header{
+    padding-top: 1vw;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.button {
+    width: 5vw;
+    height: 5vw;
+    background-color: blanchedalmond;
+    border-radius: 5px;
+    border: black 0.15em solid;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button i {
+    font-size: 2vw;
+    color: black;
+}
+
+.timerBox {
+    margin-top: 1vw;
+    width: 10vw;
+    height: 3.5vw;
+    background-color: white;
+    border: black 0.15em solid;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.timerNum {
+    font-size: 2.5vw;
+}
+
+.countBox {
+    width: 5vw;
+    height: 5vw;
+    border-radius: 50%;
+    border: black 0.15em solid;
+    background-color: #F77612;
+    color: white;
+    margin-top: 1vw;
+    text-align: center;
+}
+
+.countNum {
+    font-size: 3vw;
+}
+
+.optionScreenLayer {
+    will-change: z-index;
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: flex-end;
+}
+
+.messageBox {
+    margin: auto;
+    width: 50%;
+    height: 15vw;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 10vw;
+    align-items: center;
+    border-radius: 15px;
+}
+
+.messageBox__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 50%;
+}
+
+.message {
+    margin-top: 5%;
+    color: #dbdddf;
+}
+
+main {
+    margin: 2vw;
+    position: relative;
+}
+
+.target {
+    position: absolute;
+    cursor: pointer;
+    transform: translate(-50%, -50%);
+}
+
+.target:hover {
+    transform: scale(1.1) translate(-50%, -50%);
+}
+
+.carrot {
+    content: url("carrot/img/carrot.png");
+    width: 4vw;
+    height: 4vw;
+}
+
+.bug {
+    content: url("carrot/img/bug.png");
+    width: 3vw;
+    height: 3vw;
+}

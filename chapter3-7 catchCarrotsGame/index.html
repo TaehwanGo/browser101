@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
+    <script src="mainRev1.js" defer></script>
+</head>
+<body>
+    <section class="screen">
+        <header>
+            <div class="button button__header">
+                <i class="fas fa-play"></i>
+                <!-- <i class="fas fa-pause"></i> -->
+                <!-- <i class="fas fa-stop"></i> -->
+            </div>
+            <div class="timerBox">
+                <span class="timerNum">0:0</span>
+            </div>
+            <div class="countBox">
+                <span class="countNum">10</span>    
+            </div>
+        </header>
+        <main>
+            <!-- gen carrots and bugs -->
+        </main>
+        <section class="optionScreenLayer">
+            <div class="messageBox">
+                <div class="resumeBox messageBox__item">
+                    <div class="button button__resume">
+                        <i class="fas fa-play"></i>
+                    </div>
+                    <span class="message">RESUME</span>
+                </div>
+                <div class="stopBox messageBox__item">
+                    <div class="button button__stop">
+                        <i class="fas fa-stop"></i>
+                    </div>
+                    <span class="message">STOP</span>
+                </div>
+                <div class="endingBox messageBox__item" style="display:none">
+                    <div class="button button__retry">
+                        <i class="fas fa-redo"></i>
+                    </div>
+                    <span class="message message__ending">You won !</span>
+                </div>
+            </div>
+        </section>
+    </section>
+</body>
+</html>
