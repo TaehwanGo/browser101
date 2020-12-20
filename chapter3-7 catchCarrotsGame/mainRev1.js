@@ -99,6 +99,7 @@ function changeButtonIcon (before, after) {
 function setTime () { // button click 시 들어갈 코드 
     if(time <=0){
         gameEnd('lose');
+        bugSound.play();
     } else {
         time--;
         timeNum.innerHTML = `0:${time}`;
