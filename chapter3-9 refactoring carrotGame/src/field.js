@@ -2,7 +2,7 @@
 // 게임을 정확하게 생성하고
 // 즉, 아이템들은 원래 자리에 배치하고 클릭까지 핸들링
 const CARROT_SIZE = 80;
-const carrotSound = new Audio("sound/carrot_pull.mp3");
+import * as sound from './sound.js';
 
 export default class Field { 
     constructor(carrotCount, bugCount) {
@@ -10,6 +10,7 @@ export default class Field {
         this.bugCount = bugCount;
         this.field = document.querySelector('.game__field');
         this.fieldRect = this.field.getBoundingClientRect(); 
+        // this.onClick = this.onClick.bind(this);
         this.field.addEventListener('click', this.onClick);
     }
 
@@ -42,12 +43,14 @@ export default class Field {
         }
     }
 
-    onClick(event) {
+    onClick = (event) => {
         const target = event.target;
         if(target.matches('.carrot')){ // matches() == classList.contain()
             // 당근
             target.remove();
-            playSound(carrotSound);
+            // playSound(carrotSound);
+            sound.playCarrot();
+            // console.log(this); // this 바인딩 전후 결과 확인
             this.onItemClick && this.onItemClick('carrot');
         } else if (target.matches('.bug')) {
             this.onItemClick && this.onItemClick('bug');
@@ -57,9 +60,4 @@ export default class Field {
 
 function randomNumber(min, max) {
     return Math.random() * (max - min) + min;
-}
-
-function playSound(sound) {
-    sound.currentTime = 0;
-    sound.play();
 }
