@@ -1,8 +1,40 @@
 'use strict'
-import Field from './field.js';
+import { Field, ItemType } from './field.js';
 import * as sound from './sound.js';
 
-export default class Game {
+export const Reason = Object.freeze({
+    win: 'win',
+    lose: 'lose',
+    cancel: 'cancel'
+}); // 문자열을 쓰지 못하도록 여기에서만 선택하도록 만들기 위함
+
+// Builder pattern
+export class GameBuilder {
+    gameDuration(duration) {
+        this.gameDuration = duration;
+        return this;
+    }
+
+    carrotCount(num){
+        this.carrotCount = num;
+        return this;
+    }
+
+    bugCount(num) {
+        this.bugCount = num;
+        return this;
+    }
+
+    build() {
+        return new Game(
+            this.gameDuration,
+            this.carrotCount,
+            this.bugCount
+        );
+    }
+}
+
+class Game { // export default Game을 외부로 노출 시키는 대신 builder pattern 을 사용
     constructor(gameDuration, carrotCount, bugCount) {
         this.gameDuration = gameDuration;
         this.carrotCount = carrotCount;
@@ -13,7 +45,7 @@ export default class Game {
         this.gameBtn = document.querySelector('.game__button');
         this.gameBtn.addEventListener('click', () => {
             if(this.started) {
-                this.stop(); // 기존 stopGame()
+                this.stop(Reason.cancel); // 기존 stopGame()
             } else {
                 this.start(); // 기존 startGame()
             }
@@ -26,20 +58,7 @@ export default class Game {
         this.score = 0;
         this.timer = undefined;
     }
-        
-    stop() {
-        this.started = false;
-        this.stopGameTimer();
-        this.hideGameButton(); 
-        sound.playAlert();
-        sound.stopBackGround();
-        this.onGameStop && this.onGameStop('cancel'); // // gameFinishBanner.showWithText('REPLAY ?');
-    }
-
-    setGameStopListener(onGameStop) { // main.js에게 game이 멈췄다는 것을 알려줄 수 있는 것
-        this.onGameStop = onGameStop; // 게임이 멈췄을때 main.js에서 실행할 callback 함수
-    }
-
+     
     start() {
         this.started = true;
         this.initGame();
@@ -49,17 +68,16 @@ export default class Game {
         sound.playBackGround();
     }
 
-    finish(win) { // 구) finishGame
+    setGameStopListener(onGameStop) { // main.js에게 game이 멈췄다는 것을 알려줄 수 있는 것
+        this.onGameStop = onGameStop; // 게임이 멈췄을때 main.js에서 실행할 callback 함수
+    }
+
+    stop(reason) { // 구 : stopGame + finishGame
         this.started = false;
-        this.hideGameButton();
-        if(win){
-            sound.playWin();
-        } else {
-            sound.playBug();
-        }
         this.stopGameTimer();
+        this.hideGameButton(); 
         sound.stopBackGround();
-        this.onGameStop && this.onGameStop(win ? 'win' : 'lose'); //gameFinishBanner.showWithText(win? 'YOU WON' : 'YOU LOST');
+        this.onGameStop && this.onGameStop(reason);
     }
     
     onItemClick = (item) => { // arrow function for this binding
@@ -67,14 +85,14 @@ export default class Game {
             return;
         }
         
-        if(item === 'carrot'){ 
+        if(item === ItemType.carrot){ 
             this.score++;
             this.updateScoreBoard();
             if(this.score === this.carrotCount) {
-                this.finish(true);
+                this.stop(Reason.win);
             }
-        } else if (item === 'bug') {
-            this.finish(false);
+        } else if (item === ItemType.bug) {
+            this.stop(Reason.lose);
         }
     }
 
@@ -100,7 +118,8 @@ export default class Game {
         this.timer = setInterval(()=> {
             if(remainingTimeSec <= 0){
                 clearInterval(this.timer);
-                this.finish(this.carrotCount === this.score);
+                // this.finish(this.carrotCount === this.score);
+                this.stop(this.carrotCount === this.score ? Reason.win : Reason.lose);
                 return
             }
             this.updateTimerText(--remainingTimeSec);
