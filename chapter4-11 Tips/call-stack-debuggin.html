@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    button:hover{
+        background-color: burlywood;
+        cursor: pointer;
+    }
+</style>
+<body>
+    <button>Click to start</button>
+    <script>
+        function add(a, b) {
+            const sum =a + b;
+            return sum;
+        }
+        function calculate(a, b) {
+            console.log("calculator");
+            const result = add(a, b);
+            return result;
+        }
+        function main() {
+            const result = calculate(3, 4);
+            const element = document.createElement("span");
+            element.innerText = result;
+            document.body.appendChild(element);
+            console.log(result);
+            return;
+        }
+
+        const button = document.querySelector('button');
+        button.addEventListener('click', ()=>{
+            main();
+        });
+    </script>
+</body>
+</html>
