@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button>Click to add</button>
+    <script>
+        const button = document.querySelector('button');
+        button.addEventListener('click', ()=> {
+            const element = document.createElement('h1');
+            document.body.appendChild(element);
+            element.style.color = 'red';
+            element.innerText = 'hello';
+        });
+    </script>
+</body>
+</html>

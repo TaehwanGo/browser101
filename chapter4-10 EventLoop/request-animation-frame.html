@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button:hover {
+            background-color: burlywood;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <button>Request Animation Frame</button>
+    <script>
+        const button = document.querySelector('button');
+        button.addEventListener('click', ()=>{
+            requestAnimationFrame(()=>{
+                document.body.style.backgroundColor = 'beige';
+                // setTimeout(()=>console.log('beige'), 1000);
+                console.log('beige')
+            });
+            requestAnimationFrame(()=> {
+                document.body.style.backgroundColor = 'orange';
+                console.log("orange");
+            });
+            requestAnimationFrame(()=> {
+                document.body.style.backgroundColor = 'red';
+                console.log("red");
+            });
+        });
+    </script>
+</body>
+</html>
